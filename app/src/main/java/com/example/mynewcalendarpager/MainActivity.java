@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<ArrayList> month_cal; // 월간 달력 배열
     public static ArrayList<ArrayList> week_cal; // 주간 달력 배열
     Toolbar myToolbar;
-    
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
