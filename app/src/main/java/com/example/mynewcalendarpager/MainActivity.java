@@ -1,11 +1,14 @@
 package com.example.mynewcalendarpager;
 
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -30,6 +33,15 @@ public class MainActivity extends AppCompatActivity {
         myToolbar = findViewById(R.id.myToolbar);
         setSupportActionBar(myToolbar);
         Main(); // Main() 호출
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) { // 화면 전환
+        super.onConfigurationChanged(newConfig);
+        if(newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+        }
+        if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
