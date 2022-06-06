@@ -36,8 +36,7 @@ public class WeekViewFragment extends Fragment {
         week_GridAdapter adapter = new week_GridAdapter( getActivity().getApplicationContext(),R.layout.week_day, week_days); // 어댑터 생성
         GridView week_gridview= rootView.findViewById(R.id.week_gridview); // id를 바탕으로 화면 레이아웃에 정의된 GridView 객체 로딩
         week_gridview.setAdapter(adapter); // 어댑터를 GridView 객체에 연결
-
-
+        
         WeekTimeAdapter wt_adapter = new WeekTimeAdapter(getActivity().getApplicationContext(),R.layout.month_day, Week_Time);
         GridView week_time_gridview= rootView.findViewById(R.id.week_time_gridview); // 어댑터 생성
         week_time_gridview.setAdapter(wt_adapter); // 어댑터를 GridView 객체에 연결

@@ -52,6 +52,12 @@
                 android:stretchMode="columnWidth"
                 android:listSelector="#801FE3FB"
                 android:drawSelectorOnTop="true"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/add"
+                android:text="일정추가"
+                android:layout_gravity="center_horizontal" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

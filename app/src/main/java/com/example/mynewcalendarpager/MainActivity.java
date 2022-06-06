@@ -1,6 +1,7 @@
 package com.example.mynewcalendarpager;
 
 import android.content.res.Configuration;
+import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -24,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<ArrayList> month_cal; // 월간 달력 배열
     public static ArrayList<ArrayList> week_cal; // 주간 달력 배열
     Toolbar myToolbar;
+    public static DBHelper mDbHelper;
+    public static Calendar firstSelecteDate;
+    public static ArrayList<ScheduleViewActivity.Schedule> ScheduleArray = new ArrayList<>();
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -31,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         myToolbar = findViewById(R.id.myToolbar);
+        mDbHelper = new DBHelper(this);
         setSupportActionBar(myToolbar);
         Main(); // Main() 호출
     }
@@ -70,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
     private void Main(){ // 메인 화면 (시작 시 첫 화면)
         ToolBar = findViewById(R.id.toolbar_text);
         month_date = Calendar.getInstance(); // 현재 날짜
+        firstSelecteDate = month_date;
         Month(); // Month() 호출
         MonthView(); // MonthView() 호출
     }
@@ -162,5 +169,13 @@ public class MainActivity extends AppCompatActivity {
             times.add(String.valueOf(i)); // 0~167
         }
         return times;
+    }
+    void UpdateSchedule() {
+        ScheduleArray.clear();
+        Cursor cursor = mDbHelper.getAllEventBySQL();
+        while (cursor.moveToNext()) {
+            ScheduleViewActivity.Schedule schedule = new ScheduleViewActivity.Schedule(cursor.getString(2), cursor.getString(1));
+            ScheduleArray.add(schedule);
+        }
     }
 }
